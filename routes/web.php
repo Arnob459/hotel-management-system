@@ -27,12 +27,6 @@ Route::get('/booking', [App\Http\Controllers\xyz::class, 'booking'])->name('book
 Route::get('/room/single', [App\Http\Controllers\xyz::class, 'roomSingle'])->name('room.single');
 Route::get('/demo', [App\Http\Controllers\xyz::class, 'demo'])->name('demo');
 
-
-
-
-
-
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

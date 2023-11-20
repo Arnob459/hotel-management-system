@@ -20,5 +20,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
+        view()->share(['gnl' => \App\Models\Setting::first()]);
+        view()->share(['gnl_extra' => \App\Models\SettingExtra::first()]);
     }
 }
