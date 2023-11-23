@@ -66,7 +66,7 @@
                 </div>
 
                 <div class="col-md-12">
-                    <div class="row mb-2">
+                    <div class="row mb-3">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="basicInput" class="mb-2">Enter room Overview</label>
@@ -85,6 +85,8 @@
                                 <input type="file" name="images[]" class="form-control form-control-lg" id="basicInput"  multiple accept="image/*">
                             </div>
                         </div>
+                        <p class="text-warning mb-0">Image Will Resize 700x700 px</p>
+                        <p class="text-warning mb-0">Only jpg, jpeg, png image allowed.</p>
 
                     </div>
 

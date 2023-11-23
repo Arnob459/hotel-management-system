@@ -22,7 +22,7 @@
                                     <th>SL</th>
                                     <th>Name</th>
                                     <th>Price</th>
-                                    <th>Actions</th>
+                                    <th class="text-center">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -35,9 +35,12 @@
                                     <td class="text-bold-500">{{ $item->name }}</td>
                                     <td class="text-bold-500">{{formatter_money( $item->price) }}</td>
 
-                                    <td>
-                                        <a  href="{{ route('admin.rooms.edit',$item->id) }}"  class="btn btn-primary rounded-pill"  ><i class ="bi bi-pencil">Edit</i></a>
+                                    <td class="text-center">
+
+                                        <a href="{{ route('admin.rooms.edit',$item->id) }}"  class="btn btn-primary rounded-pill"  ><i class ="fa fa-edit"></i> Edit</a>
+                                        <a type="button"  href="{{ route('admin.rooms.photos',$item->id) }}"  class="btn btn-warning rounded-pill"  ><i class ="fa fa-images"></i> Galary</a>
                                         <button type="button" class="btn btn-danger rounded-pill" data-toggle="modal" data-target="#deleteModal{{ $item->id }}"><i class ="fa fa-trash"></i>Delete</button>
+
                                     </td>
 
                                 </tr>
@@ -81,3 +84,6 @@
 
 @endsection
 
+@push('js')
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+@endpush

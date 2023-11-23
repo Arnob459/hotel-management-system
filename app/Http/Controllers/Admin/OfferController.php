@@ -98,6 +98,7 @@ class OfferController extends Controller
           if (!$data) {
               return redirect()->back()->with('success', ' Deleted successfully');
           }
+        remove_file(config('constants.offer.path') . '/' . $data->image);
           $data->delete();
           return redirect()->back()->with('success', ' Deleted successfully');
       }

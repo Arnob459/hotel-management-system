@@ -53,9 +53,8 @@ class RoomController extends Controller
                 try {
                     $path = config('constants.room.path');
                     $size = config('constants.room.size');
-                    $thumb = config('constants.room.thumb');
                     $old_image = null;
-                    $filename = upload_image($image, $path, $size,$old_image, $thumb);
+                    $filename = upload_image($image, $path, $size,$old_image);
                 } catch (\Exception $exp) {
                     return back()->withErrors('Image could not be uploaded');
                 }
@@ -103,7 +102,66 @@ class RoomController extends Controller
         if (!$data) {
             return redirect()->back()->with('success', ' Deleted successfully');
         }
+        $data->images()->delete();
+
+        // $image = RoomImage::where('room_id',$id)->get();
+        // dd($image->);
+        // foreach ($data->images() as  $value) {
+        //     remove_file(config('constants.room.path') . '/' . $value->picture);
+
+        // }
+        // $image ->delete();
+        $data->delete();
+
+        return redirect()->back()->with('success', ' Deleted successfully');
+    }
+
+    public function photos($id)
+    {
+        $data['page_title'] = 'Room Photos';
+
+        $data['photos'] = RoomImage::where('room_id',$id)->get();
+        $data['room_id'] = $id;
+        return view('admin.rooms.photos',$data);
+    }
+
+    public function photosUpdate(Request $request,$id){
+
+
+
+        $this->validate($request, [
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+        if ($request->hasFile('image')) {
+          try {
+              $path = config('constants.room.path');
+              $size = config('constants.room.size');
+              $filename = upload_image($request->image, $path, $size);
+          } catch (\Exception $exp) {
+
+              return back()->withErrors('Image could not be uploaded');
+          }
+        $data = new RoomImage();
+        $data->room_id =  $id;
+        $data->picture =  $filename;
+        $data->save();
+      }
+
+
+        return back()->with('success','Picture Added Successfully');
+
+    }
+
+    public function photosDestroy($id)
+    {
+        $data = RoomImage::find($id);
+        if (!$data) {
+            return redirect()->back()->with('success', ' Deleted successfully');
+        }
+        remove_file(config('constants.room.path') . '/' . $data->picture);
         $data->delete();
         return redirect()->back()->with('success', ' Deleted successfully');
     }
+
 }

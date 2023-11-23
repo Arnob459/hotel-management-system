@@ -69,6 +69,11 @@ Route::name('admin.')->group(function() {
         Route::post('rooms/edit/{id}', [RoomController::class, 'update'])->name('rooms.update');
         Route::delete('/rooms/destroy/{id}', [RoomController::class, 'destroy'])->name('rooms.destroy');
 
+        Route::get('rooms/photos/{id}', [RoomController::class, 'photos'])->name('rooms.photos');
+        Route::post('rooms/photos/{id}', [RoomController::class, 'photosUpdate'])->name('rooms.photos.update');
+        Route::delete('/rooms/photos/destroy/{id}', [RoomController::class, 'photosDestroy'])->name('rooms.photos.destroy');
+
+
         //logout
         Route::get('/logout', [Auth\LoginController ::class, 'logout'])->name('logout');
     });
