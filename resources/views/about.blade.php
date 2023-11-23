@@ -22,22 +22,22 @@
                     <div class="row align-items-center">
                         <div class="col-lg-3 col-6">
                             <div class="spacer-double sm-hide"></div>
-                            <img src="{{ asset('assets/frontend/images/misc/1.jpg') }}" alt="" class="img-responsive wow fadeInUp" data-wow-duration="1s">
+                            <img src="{{ asset('assets/images/about/'.$gnl_extra->about_image) }}" alt="" class="img-responsive wow fadeInUp" data-wow-duration="1s">
                         </div>
 
                         <div class="col-lg-3 col-6">
-                            <img src="{{ asset('assets/frontend/images/misc/2.jpg') }}" alt="" class="img-responsive wow fadeInUp" data-wow-duration="1.5s">
+                            <img src="{{ asset('assets/images/about/'.$gnl_extra->about_image2) }}" alt="" class="img-responsive wow fadeInUp" data-wow-duration="1.5s">
                         </div>
 
                         <div class="col-lg-6 wow fadeIn">
                                 <div class="padding20">
-                                <h2 class="title mb10">The Luxury Experience<br>You'll Remember
+                                <h2 class="title mb10">{{ $gnl_extra->about_title }}
                                     <span class="small-border"></span>
                                 </h2>
 
-                                <p>Welcome to our luxurious hotel, where sophistication, impeccable service, and unparalleled comfort await you. From the moment you step into our grand lobby, you'll be immersed in an atmosphere of opulence and refined elegance. As you enter our elegant establishment, you will be greeted by a captivating ambiance that exudes sophistication and tranquility.</p>
+                                <p>{!! $gnl_extra->about_des !!}</p>
 
-                                <a href="room-2-cols.html" class="btn-line"><span>Choose Room</span>s</a>
+                                <a href="{{ route('rooms') }}" class="btn-line"><span>Choose Room</span>s</a>
 
                                 </div>
                         </div>
@@ -57,105 +57,20 @@
                     </div>
 
                     <div class="row">
+                        @foreach ($facilities as $item)
 
                         <div class="col-md-4 mb-3">
                             <div class="box-icon">
-                                <span class="icon bg-color"><img src="{{ asset('assets/frontend/images/svg/restaurant-svgrepo-com.svg') }}" alt=""></span>
+                                <span class="icon bg-color"><img src="{{ asset('assets/images/facility/'.$item->image) }}" alt="" ></span>
                                 <div class="text">
-                                    <h3 class="style-1">Restaurant</h3>
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                        laudantium, totam rem aperiam, eaque ipsa.</p>
+                                    <h3 class="style-1">{{ $item->title }}</h3>
+                                    <p>{{ $item->short_text }}</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-md-4 mb-3">
-                            <div class="box-icon">
-                                <span class="icon bg-color"><img src="images/svg/swimming-pool-svgrepo-com.svg" alt=""></span>
-                                <div class="text">
-                                    <h3 class="style-1">Swimming Pool</h3>
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                        laudantium, totam rem aperiam, eaque ipsa.</p>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
 
-                        <div class="col-md-4 mb-3">
-                            <div class="box-icon">
-                                <span class="icon bg-color"><img src="images/svg/fitness-gym-svgrepo-com.svg" alt=""></span>
-                                <div class="text">
-                                    <h3 class="style-1">Fitness Area</h3>
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                        laudantium, totam rem aperiam, eaque ipsa.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-                            <div class="box-icon">
-                                <span class="icon bg-color"><img src="images/svg/coffee-table-svgrepo-com.svg" alt=""></span>
-                                <div class="text">
-                                    <h3 class="style-1">Mini Bar</h3>
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                        laudantium, totam rem aperiam, eaque ipsa.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4" >
-                            <div class="box-icon">
-                                <span class="icon bg-color"><img src="images/svg/meeting-explain-svgrepo-com.svg" alt=""></span>
-                                <div class="text">
-                                    <h3 class="style-1">Meeting Room</h3>
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                        laudantium, totam rem aperiam, eaque ipsa.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-                            <div class="box-icon">
-                                <span class="icon bg-color"><img src="images/svg/laundry-machine-svgrepo-com.svg" alt=""></span>
-                                <div class="text">
-                                    <h3 class="style-1">Laundry Service</h3>
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                        laudantium, totam rem aperiam, eaque ipsa.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-                            <div class="box-icon">
-                                <span class="icon bg-color"><img src="images/svg/screen-tv-svgrepo-com.svg" alt=""></span>
-                                <div class="text">
-                                    <h3 class="style-1">Satelite TV</h3>
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                        laudantium, totam rem aperiam, eaque ipsa.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-                            <div class="box-icon">
-                                <span class="icon bg-color"><img src="images/svg/safebox-svgrepo-com.svg" alt=""></span>
-                                <div class="text">
-                                    <h3 class="style-1">Safe Box</h3>
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                        laudantium, totam rem aperiam, eaque ipsa.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-                            <div class="box-icon">
-                                <span class="icon bg-color"><img src="images/svg/car-parking-svgrepo-com.svg" alt=""></span>
-                                <div class="text">
-                                    <h3 class="style-1">Parking Area</h3>
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                        laudantium, totam rem aperiam, eaque ipsa.</p>
-                                </div>
-                            </div>
-                        </div>
 
                     </div>
 

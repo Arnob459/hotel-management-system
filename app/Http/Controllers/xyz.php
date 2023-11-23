@@ -3,17 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Facility;
+use App\Models\Offer;
+use App\Models\Blog;
+use App\Models\Room;
+use App\Models\RoomImage;
+
+
+
 
 class xyz extends Controller
 {
     public function about()
     {
-        return view('about');
+        $data['facilities'] = Facility::all();
+        return view('about',$data);
     }
 
     public function blog()
     {
-        return view('blog');
+        $data['blogs'] = Blog::all();
+        return view('blog',$data);
     }
     public function blogSingle()
     {
@@ -32,11 +42,14 @@ class xyz extends Controller
     }
     public function offer()
     {
-        return view('offer');
+        $data['offers'] = Offer::all();
+        return view('offer',$data);
     }
     public function rooms()
     {
-        return view('rooms');
+        $data['rooms'] = Room::all();
+
+        return view('rooms',$data);
     }
     public function roomSingle()
     {

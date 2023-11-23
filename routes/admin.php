@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
+| routes are loaded by the RouteFacilityProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
 */
@@ -35,6 +35,39 @@ Route::name('admin.')->group(function() {
         Route::get('/change/password',[AdminController::class,'passwordChange'])->name('password');
         Route::post('password',[AdminController::class,'passwordUpdate'])->name('password.update');
 
+        //About
+        Route::get('home/about', [SettingExtraController::class, 'about'])->name('about');
+        Route::post('home/about', [SettingExtraController::class, 'aboutUpdate'])->name('about.update');
+
+        //Facility
+        Route::get('home/facility', [FacilityController::class, 'Facility'])->name('facility');
+        Route::get('home/facility/create', [FacilityController::class, 'facilityCreate'])->name('facility.create');
+        Route::post('home/facility/create', [FacilityController::class, 'facilityStore'])->name('facility.store');
+        Route::get('home/facility/edit/{id}', [FacilityController::class, 'facilityEdit'])->name('facility.edit');
+        Route::post('home/facility/edit/{id}', [FacilityController::class, 'facilityUpdate'])->name('facility.update');
+        Route::delete('/facility/destroy/{id}', [FacilityController::class, 'destroy'])->name('facility.destroy');
+
+        //Offer
+        Route::get('home/offer', [OfferController::class, 'Offer'])->name('offer');
+        Route::get('home/offer/create', [OfferController::class, 'offerCreate'])->name('offer.create');
+        Route::post('home/offer/create', [OfferController::class, 'offerStore'])->name('offer.store');
+        Route::get('home/offer/edit/{id}', [OfferController::class, 'offerEdit'])->name('offer.edit');
+        Route::post('home/offer/edit/{id}', [OfferController::class, 'offerUpdate'])->name('offer.update');
+        Route::delete('/offer/destroy/{id}', [OfferController::class, 'destroy'])->name('offer.destroy');
+        //Blog
+        Route::get('home/blog', [BlogController::class, 'Blog'])->name('blog');
+        Route::get('home/blog/create', [BlogController::class, 'blogCreate'])->name('blog.create');
+        Route::post('home/blog/create', [BlogController::class, 'blogStore'])->name('blog.store');
+        Route::get('home/blog/edit/{id}', [BlogController::class, 'blogEdit'])->name('blog.edit');
+        Route::post('home/blog/edit/{id}', [BlogController::class, 'blogUpdate'])->name('blog.update');
+        Route::delete('/blog/destroy/{id}', [BlogController::class, 'destroy'])->name('blog.destroy');
+        //Room
+        Route::get('/rooms', [RoomController::class, 'index'])->name('rooms.index');
+        Route::get('/rooms/create', [RoomController::class, 'create'])->name('rooms.create');
+        Route::post('/rooms', [RoomController::class, 'store'])->name('rooms.store');
+        Route::get('rooms/edit/{id}', [RoomController::class, 'edit'])->name('rooms.edit');
+        Route::post('rooms/edit/{id}', [RoomController::class, 'update'])->name('rooms.update');
+        Route::delete('/rooms/destroy/{id}', [RoomController::class, 'destroy'])->name('rooms.destroy');
 
         //logout
         Route::get('/logout', [Auth\LoginController ::class, 'logout'])->name('logout');
