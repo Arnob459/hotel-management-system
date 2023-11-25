@@ -8,11 +8,13 @@ use App\Models\Offer;
 use App\Models\Blog;
 use App\Models\Room;
 use App\Models\RoomImage;
+use App\Models\Gallery;
 
 
 
 
-class xyz extends Controller
+
+class FrontendController extends Controller
 {
     public function about()
     {
@@ -33,7 +35,9 @@ class xyz extends Controller
 
     public function galary()
     {
-        return view('galary');
+        $data['gallery'] = Gallery::all();
+
+        return view('galary',$data);
     }
 
     public function contact()
@@ -47,7 +51,7 @@ class xyz extends Controller
     }
     public function rooms()
     {
-        $data['rooms'] = Room::all();
+        $data['rooms'] = Room::where('status',1)->get();
 
         return view('rooms',$data);
     }

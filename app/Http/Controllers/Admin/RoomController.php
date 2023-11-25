@@ -81,6 +81,7 @@ class RoomController extends Controller
             'short_text' => 'required|string',
             'facility' => 'required|string',
             'description' => 'required|string',
+            'status' => 'required|integer|string|min:0|max:2',
         ]);
 
         $room = Room::findOrfail($id);
@@ -92,29 +93,13 @@ class RoomController extends Controller
         $room->short_text =  $request->short_text;
         $room->facility =  $request->facility;
         $room->description =  $request->description;
+        $room->status =  $request->status;
+
         $room->save();
 
         return back()->with('success','Room Updated Successfully');
     }
-    public function destroy($id)
-    {
-        $data = Room::find($id);
-        if (!$data) {
-            return redirect()->back()->with('success', ' Deleted successfully');
-        }
-        $data->images()->delete();
 
-        // $image = RoomImage::where('room_id',$id)->get();
-        // dd($image->);
-        // foreach ($data->images() as  $value) {
-        //     remove_file(config('constants.room.path') . '/' . $value->picture);
-
-        // }
-        // $image ->delete();
-        $data->delete();
-
-        return redirect()->back()->with('success', ' Deleted successfully');
-    }
 
     public function photos($id)
     {

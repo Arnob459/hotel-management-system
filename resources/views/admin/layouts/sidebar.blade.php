@@ -28,7 +28,7 @@
                 <li
                 class="sidebar-item {{ Route::is('admin.rooms.index') ? 'active' : '' }}">
                 <a href="{{ route('admin.rooms.index') }}" class="sidebar-link">
-                    <i class="fas fa-home"></i>
+                    <i class="fas fa-bed"></i>
                     <span>Rooms</span>
                 </a>
             </li>
@@ -61,16 +61,10 @@
                         <li class="submenu-item {{ Route::is('admin.blog') ? 'active' : '' }}">
                             <a href="{{ route('admin.blog') }}">Blog</a>
                         </li>
-                        {{--
-                        <li class="submenu-item {{ Route::is('admin.titleSubtitle') ? 'active' : '' }}">
-                            <a href="{{ route('admin.titleSubtitle') }}">Title Subtitle </a>
+
+                        <li class="submenu-item {{ Route::is('admin.gallery.index') ? 'active' : '' }}">
+                            <a href="{{ route('admin.gallery.index') }}">Gallery </a>
                         </li>
-                        <li class="submenu-item {{ Route::is('admin.privacy') ? 'active' : '' }}">
-                            <a href="{{ route('admin.privacy') }}">Privacy </a>
-                        </li>
-                        <li class="submenu-item {{ Route::is('admin.terms') ? 'active' : '' }}">
-                            <a href="{{ route('admin.terms') }}">Terms</a>
-                        </li> --}}
 
                     </ul>
                 </li>

@@ -67,11 +67,17 @@ Route::name('admin.')->group(function() {
         Route::post('/rooms', [RoomController::class, 'store'])->name('rooms.store');
         Route::get('rooms/edit/{id}', [RoomController::class, 'edit'])->name('rooms.edit');
         Route::post('rooms/edit/{id}', [RoomController::class, 'update'])->name('rooms.update');
-        Route::delete('/rooms/destroy/{id}', [RoomController::class, 'destroy'])->name('rooms.destroy');
 
         Route::get('rooms/photos/{id}', [RoomController::class, 'photos'])->name('rooms.photos');
         Route::post('rooms/photos/{id}', [RoomController::class, 'photosUpdate'])->name('rooms.photos.update');
         Route::delete('/rooms/photos/destroy/{id}', [RoomController::class, 'photosDestroy'])->name('rooms.photos.destroy');
+
+        //Gallery
+        Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery.index');
+        Route::post('/gallery', [GalleryController::class, 'store'])->name('gallery.store');
+        Route::get('gallery/edit/{id}', [GalleryController::class, 'edit'])->name('gallery.edit');
+        Route::post('gallery/edit/{id}', [GalleryController::class, 'update'])->name('gallery.update');
+        Route::delete('/gallery/destroy/{id}', [GalleryController::class, 'destroy'])->name('gallery.destroy');
 
 
         //logout

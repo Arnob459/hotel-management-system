@@ -41,6 +41,10 @@ return [
         'size' => '700x700',
         'thumb' => '624x414',
     ],
+    'gallery' => [
+        'path' => 'assets/images/gallery',
+
+    ],
 
     'banner' => [
         'path' => 'assets/images/banner',
@@ -50,28 +54,6 @@ return [
     'banner_image' => [
         'path' => 'assets/images/banner',
         'size' => '950x730'
-    ],
-
-
-    'withdraw' => [
-        'method' => [
-            'path' => 'assets/images/withdraw/method',
-            'size' => '120x120',
-        ],
-        'verify' => [
-            'path' => 'assets/images/verify_withdraw'
-
-        ]
-    ],
-    'deposit' => [
-        'gateway' => [
-            'path' => 'assets/images/gateway',
-            'size' => '200x200',
-        ],
-        'verify' => [
-            'path' => 'assets/images/verify_deposit'
-
-        ]
     ],
 
     'logo_fav' => [
@@ -108,17 +90,6 @@ return [
     ],
     'stringLimit' => [
         'default' => 40,
-    ],
-
-
-    'plan' => [
-        'path' => 'assets/images/plan',
-        'size' => '512x512',
-        'thumb' => '62x62',
-    ],
-    'reward' => [
-        'path' => 'assets/images/reward',
-        'size' => '870x225',
     ],
 
 

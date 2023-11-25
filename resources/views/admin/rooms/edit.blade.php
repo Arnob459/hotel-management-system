@@ -36,11 +36,14 @@
                                 <input type="text" name="area" class="form-control form-control-lg" id="basicInput" value="{{ $room->area }}" required  >
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="basicInput" class="mb-2">Enter Guest limit per room</label>
-                                <input type="text" name="guest" class="form-control form-control-lg" id="basicInput" value="{{ $room->guest }}" required  >
-                            </div>
+
+                        <div class="form-group">
+                            <label for="contact-info-vertical"  class="mb-2">Status</label>
+                            <select name="status"  class="form-select form-control-lg" >
+                                <option value="1"@if ($room->status == '1') selected @endif>Active</option>
+                                <option value="0"@if ($room->status != '1') selected @endif>Deactive</option>
+
+                            </select>
                         </div>
                     </div>
 
@@ -53,11 +56,17 @@
                                 <input type="number" name="price" class="form-control form-control-lg" id="basicInput" value="{{ $room->price }}" required  >
                             </div>
                         </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="basicInput" class="mb-2">Enter Guest limit per room</label>
+                                <input type="text" name="guest" class="form-control form-control-lg" id="basicInput" value="{{ $room->guest }}" required  >
+                            </div>
+                        </div>
 
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="basicInput" class="mb-2">Enter Short Text</label>
-                                <textarea type="text" cols="5" rows="8" class="form-control form-control-lg"  name="short_text"  required > {{ $room->short_text }} </textarea>
+                                <textarea type="text" cols="5" rows="5" class="form-control form-control-lg"  name="short_text"  required > {{ $room->short_text }} </textarea>
                             </div>
                         </div>
 
