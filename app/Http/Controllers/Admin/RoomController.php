@@ -6,19 +6,21 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Room;
 use App\Models\RoomImage;
+use App\Models\RoomCode;
+
 
 class RoomController extends Controller
 {
     public function index()
     {
         $rooms = Room::with('images')->get();
-        $page_title = 'Room Create';
+        $page_title = 'Room Type';
         return view('admin.rooms.index', compact('rooms','page_title'));
     }
 
     public function create()
     {
-        $page_title = 'Room Create';
+        $page_title = 'Room Type Create';
         return view('admin.rooms.create', compact('page_title'));
     }
 
@@ -148,5 +150,70 @@ class RoomController extends Controller
         $data->delete();
         return redirect()->back()->with('success', ' Deleted successfully');
     }
+
+    public function roomIndex()
+    {
+        $rooms = RoomCode::all();
+        $page_title = 'Rooms';
+        return view('admin.room.index', compact('rooms','page_title'));
+    }
+
+    public function roomCreate()
+    {
+        $page_title = 'Room Create';
+        $roomtypes = Room::where('status',1)->get();
+
+        return view('admin.room.create', compact('page_title','roomtypes'));
+    }
+
+    public function roomStore(Request $request)
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'room_type' => 'required|integer|max:255',
+        ]);
+
+
+        $room = new RoomCode();
+        $room->title =  $request->title;
+        $room->room_id =  $request->room_type;
+
+        $room->save();
+
+        return redirect()->route('admin.room.create')->with('success', 'Room created successfully.');
+    }
+
+    public function roomEdit($id) {
+        $data['page_title'] = 'Room Edit';
+        $data['roomtypes'] = Room::where('status',1)->get();
+        $data['room'] = RoomCode::findOrfail($id);
+
+        return view('admin.room.edit',$data);
+    }
+    public function roomUpdate(Request $request, $id){
+
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'room_type' => 'required|integer|max:255',
+        ]);
+
+        $room = RoomCode::findOrfail($id);
+        $room->title =  $request->title;
+        $room->room_id =  $request->room_type;
+        $room->save();
+
+        return back()->with('success','Room Updated Successfully');
+    }
+
+    public function roomDestroy($id)
+    {
+        $data = RoomCode::find($id);
+        if (!$data) {
+            return redirect()->back()->with('success', ' Deleted successfully');
+        }
+        $data->delete();
+        return redirect()->back()->with('success', ' Deleted successfully');
+    }
+
 
 }

@@ -38,7 +38,7 @@ return [
     ],
     'room' => [
         'path' => 'assets/images/room',
-        'size' => '700x700',
+        'size' => '480x320',
         'thumb' => '624x414',
     ],
     'gallery' => [

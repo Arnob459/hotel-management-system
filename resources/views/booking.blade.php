@@ -20,12 +20,16 @@
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
                     <div class="de-content-overlay">
-                        <form name="contactForm" id='contact_form' method="post">
+                        <form  id='contact_form' action="{{ route('booking.store') }}" method="post">
+                            @csrf
                             <div id="step-1" class="row">
 
                                 <div class="col-md-12 mb10">
-                                    <h4>Choose Date</h4>
-                                    <input type="text" id="date-picker" class="form-control" name="date" value="">
+                                    <h4>Check In Date</h4>
+                                    <input type="date"  class="form-control checkin-date" name="checkin_date" value="" required>
+
+                                    <h4>Check Out Date</h4>
+                                    <input type="date"  class="form-control" name="checkout_date" value="" required>
 
                                     <div class="guests-n-rooms">
                                         <div class="row">
@@ -33,7 +37,7 @@
                                                 <h4>Adult</h4>
                                                 <div class="de-number">
                                                     <span class="d-minus">-</span>
-                                                    <input type="text" value="1">
+                                                    <input type="text" name="adults" value="1">
                                                     <span class="d-plus">+</span>
                                                 </div>
                                             </div>
@@ -41,7 +45,7 @@
                                                 <h4>Children</h4>
                                                 <div class="de-number">
                                                     <span class="d-minus">-</span>
-                                                    <input type="text" value="0">
+                                                    <input type="text" name="children" value="0">
                                                     <span class="d-plus">+</span>
                                                 </div>
                                             </div>
@@ -49,7 +53,7 @@
                                                 <h4>Room</h4>
                                                 <div id="d-room-count" class="de-number">
                                                     <span class="d-minus">-</span>
-                                                    <input id="room-count" type="text" value="1">
+                                                    <input id="room-count" type="text" name="roomcount" value="1">
                                                     <span class="d-plus">+</span>
                                                 </div>
                                             </div>
@@ -60,13 +64,8 @@
 
                             <div class="select-room">
                                 <h4>Select Room</h4>
-                                <select name="Room Type" id="room-type" class="form-control">
-                                    <option value="Standart Room">Standart Room</option>
-                                    <option value="Deluxe Room">Deluxe Room</option>
-                                    <option value="Premier Room">Premier Room</option>
-                                    <option value="Family Suite">Family Suite</option>
-                                    <option value="Luxury Suite">Luxury Suite</option>
-                                    <option value="President Suite">President Suite</option>
+                                <select id="room-type" class="form-control room-list" name="room_id" required>
+
                                 </select>
                             </div>
 
@@ -76,12 +75,12 @@
                                 <div class="col-md-6">
                                     <div id='name_error' class='error'>Please enter your name.</div>
                                     <div>
-                                        <input type='text' name='Name' id='name' class="form-control" placeholder="Your Name" required>
+                                        <input type='text' name='name' id='name' class="form-control" placeholder="Your Name" required>
                                     </div>
 
                                     <div id='email_error' class='error'>Please enter your valid E-mail ID.</div>
                                     <div>
-                                        <input type='email' name='Email' id='email' class="form-control" placeholder="Your Email" required>
+                                        <input type='email' name='email' id='email' class="form-control" placeholder="Your Email" required>
                                     </div>
 
                                     <div id='phone_error' class='error'>Please enter your phone number.</div>
@@ -97,7 +96,6 @@
                                 </div>
 
                                 <div class="col-md-12">
-                                    <div class="g-recaptcha" data-sitekey="6LdW03QgAAAAAJko8aINFd1eJUdHlpvT4vNKakj6"></div>
                                     <p id='submit' class="mt20">
                                         <input type='submit' id='send_message' value='Submit Form' class="btn btn-line">
                                     </p>
@@ -115,3 +113,34 @@
 
 
 @endsection
+@push('js')
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".checkin-date").on('blur',function(){
+            var _checkindate=$(this).val();
+            // Ajax
+            $.ajax({
+                url:"{{url('booking')}}/available-rooms/"+_checkindate,
+                dataType:'json',
+                beforeSend:function(){
+                    $(".room-list").html('<option>--- Loading ---</option>');
+                },
+                success:function(res){
+                    var _html='';
+                    $.each(res.data,function(index,row){
+                        _html+='<option  value="'+row.room.id+'">'+row.room.title+'-'+row.roomtype.name+'</option>';
+                    });
+                    $(".room-list").html(_html);
+
+                    console.log($data);
+
+                }
+            });
+        });
+
+
+
+    });
+</script>
+@endpush

@@ -35,7 +35,7 @@
                                     <span class="small-border"></span>
                                 </h2>
 
-                                <p>{!! $gnl_extra->about_des !!}</p>
+                                <p>{{  $gnl_extra->about_des  }}</p>
 
                                 <a href="{{ route('rooms') }}" class="btn-line"><span>Choose Room</span>s</a>
 

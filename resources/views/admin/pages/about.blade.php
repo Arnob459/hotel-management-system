@@ -60,7 +60,7 @@
                     <div class="col-md-12 mb-2">
                         <div class="form-group">
                             <label for="myNicEditor" class="mb-2">Description</label>
-                            <textarea type="text" cols="10" rows="10" class="form-control" id="myNicEditor" name="about_description" required >{{  $about->about_des  }}</textarea>
+                            <textarea type="text" cols="10" rows="10" class="form-control"  name="about_description" required >{{  $about->about_des  }}</textarea>
                         </div>
                     </div>
                 </div>

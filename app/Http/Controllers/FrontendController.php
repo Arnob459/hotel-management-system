@@ -9,6 +9,9 @@ use App\Models\Blog;
 use App\Models\Room;
 use App\Models\RoomImage;
 use App\Models\Gallery;
+use App\Models\Testimonial;
+
+
 
 
 
@@ -16,6 +19,15 @@ use App\Models\Gallery;
 
 class FrontendController extends Controller
 {
+    public function index()
+    {
+        $data['testimonials'] = Testimonial::all();
+        $data['rooms'] = Room::where('status',1)->inRandomOrder()->take(3)->get();
+
+
+        return view('welcome',$data);
+    }
+
     public function about()
     {
         $data['facilities'] = Facility::all();
@@ -55,16 +67,12 @@ class FrontendController extends Controller
 
         return view('rooms',$data);
     }
-    public function roomSingle()
+    public function roomSingle($id)
     {
-        return view('room_single');
+        $data['room']= Room::with('images')->where('status',1)->findOrfail($id);
+        $data['photos'] = RoomImage::where('room_id',$id)->get();
+
+        return view('room_single',$data);
     }
-    public function booking()
-    {
-        return view('booking');
-    }
-    public function demo()
-    {
-        return view('demo');
-    }
+
 }

@@ -21,23 +21,24 @@
             <div class="row g-4">
                 @foreach ($rooms as $item)
 
-                <div class="col-lg-6">
+                <div class="col-lg-4">
                     <div class="de-room">
                         <div class="d-image">
                             <div class="d-label">only 2 room left</div>
                             <div class="d-details">
                                 <span class="d-meta-1">
-                                    <img src="{{ asset('assets/frontend/images/ui/user.svg') }}" alt="">2 Guests
+                                    <img src="{{ asset('assets/frontend/images/ui/user.svg') }}" alt="">{{ $item->guest }} Guests
                                 </span>
                                 <span class="d-meta-2">
-                                    <img src="{{ asset('assets/frontend/images/ui/floorplan.svg') }}" alt="">30 ft
+                                    <img src="{{ asset('assets/frontend/images/ui/floorplan.svg') }}" alt="">{{ $item->area }}
                                 </span>
                             </div>
-                            <a href="{{ route('room.single') }}">
+                            <a href="{{ route('room.single',$item->id) }}">
 
                                 @foreach ($item->images as $image)
-                                @endforeach
                                 <img src="{{ asset('assets/images/room/'.$image->picture) }}" class="img-fluid" alt="">
+                                @break
+                                @endforeach
 
 
 
@@ -46,8 +47,8 @@
 
                         <div class="d-text">
                             <h3>{{ $item->name }}</h3>
-                            <p>Most hotels and major hospitality companies have set industry standards to classify hotel types. An upscale full-service hotel facility offers luxury...</p>
-                            <a href="{{ route('room.single') }}" class="btn-line"><span>Book Now For $29</span></a>
+                            <p>{{ $item->short_text }}</p>
+                            <a href="{{ route('room.single',$item->id) }}" class="btn-line"><span>Book Now For {{ $gnl->cur_sym}}{{formatter_money( $item->price) }}</span></a>
                         </div>
                     </div>
                 </div>

@@ -29,24 +29,26 @@
                 class="sidebar-item {{ Route::is('admin.rooms.index') ? 'active' : '' }}">
                 <a href="{{ route('admin.rooms.index') }}" class="sidebar-link">
                     <i class="fas fa-bed"></i>
+                    <span>Room Type</span>
+                </a>
+                </li>
+                <li
+                class="sidebar-item {{ Route::is('admin.room.index') ? 'active' : '' }}">
+                <a href="{{ route('admin.room.index') }}" class="sidebar-link">
+                    <i class="fas fa-door-closed"></i>
                     <span>Rooms</span>
                 </a>
-            </li>
-
+                </li>
+                <li class="sidebar-title">Home</li>
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="fas fa-book"></i>
                         <span>Home Page</span>
                     </a>
                     <ul class="submenu ">
-                        {{-- <li class="submenu-item {{ Route::is('admin.banner') ? 'active' : '' }}">
+                        <li class="submenu-item {{ Route::is('admin.banner') ? 'active' : '' }}">
                             <a href="{{ route('admin.banner') }}">Banner</a>
                         </li>
-                         <li class="submenu-item {{ Route::is('admin.slider') ? 'active' : '' }}">
-                            <a href="{{ route('admin.slider') }}">Slider</a>
-                        </li> --}}
-
-
 
                        <li class="submenu-item {{ Route::is('admin.about') ? 'active' : '' }}">
                             <a href="{{ route('admin.about') }}">About</a>
@@ -64,6 +66,38 @@
 
                         <li class="submenu-item {{ Route::is('admin.gallery.index') ? 'active' : '' }}">
                             <a href="{{ route('admin.gallery.index') }}">Gallery </a>
+                        </li>
+
+                        <li class="submenu-item {{ Route::is('admin.testimonial') ? 'active' : '' }}">
+                            <a href="{{ route('admin.testimonial') }}">Testimonial</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="sidebar-title">BASIC SETTINGS</li>
+                <li class="sidebar-item  has-sub">
+                    <a href="#" class='sidebar-link'>
+                        <i class="fas fa-cogs"></i>
+                        <span>Basic Settings</span>
+                    </a>
+                    <ul class="submenu ">
+                        <li class="submenu-item {{ Route::is('admin.settings') ? 'active' : '' }}">
+                            <a href="{{ route('admin.settings') }}">Basic</a>
+                        </li>
+                        <li class="submenu-item {{ Route::is('admin.logo') ? 'active' : '' }}">
+                            <a href="{{ route('admin.logo') }}">Logo & favicon</a>
+                        </li>
+                        <li class="submenu-item {{ Route::is('admin.contact') ? 'active' : '' }}">
+                            <a href="{{ route('admin.contact') }}">Contact</a>
+                        </li>
+                        <li class="submenu-item {{ Route::is('admin.breadcrumb') ? 'active' : '' }}">
+                            <a href="{{ route('admin.breadcrumb') }}">Breadcrumb</a>
+                        </li>
+                        <li class="submenu-item {{ Route::is('admin.social.create') ? 'active' : '' }}">
+                            <a href="{{ route('admin.social.create') }}">Social</a>
+                        </li>
+                        <li class="submenu-item {{ Route::is('admin.footer') ? 'active' : '' }}">
+                            <a href="{{ route('admin.footer') }}">Footer Section</a>
                         </li>
 
                     </ul>

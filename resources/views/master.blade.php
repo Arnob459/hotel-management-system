@@ -31,7 +31,7 @@
                         <a href="#"><i class="fa fa-twitter fa-lg"></i></a>
                         <a href="#"><i class="fa fa-instagram fa-lg"></i></a>
                     </div>
-                    <span><a href="#">Book Now</a></span>
+                    <span><a href="{{ route('booking') }}">Book Now</a></span>
                 </div>
                 <!-- float text close -->
 
@@ -43,7 +43,7 @@
                         <div class="col-md-12">
                             <!-- logo begin -->
                             <div id="logo">
-                                <a href="index.html">
+                                <a href="{{ route('index') }}">
                                     <img class="logo" src="{{ asset('assets/frontend/images/logo.png') }}" alt="">
                                 </a>
                             </div>
@@ -74,7 +74,7 @@
 
                             <div class="pt80 pb80">
                                 <div class="mo-nav text-center">
-                                    <a href="index.html">
+                                    <a href="{{ route('index') }}l">
                                         <img class="logo" src="{{ asset('assets/frontend/images/logo.png') }}" alt="">
                                     </a>
 
@@ -82,12 +82,7 @@
 
                                     <!-- mainmenu begin -->
                                     <ul id="mo-menu">
-                                        <li>
-                                            Home
-                                            <ul>
-                                                <li><a href="index-full-page.html">Full Page</a></li>
-                                            </ul>
-                                        </li>
+                                        <li><a href="{{route('index')}}">Home</a></li>
                                         <li><a href="{{route('about')}}">About</a></li>
 
                                         <li><a href="{{route('rooms')}}">Rooms</a></li>
@@ -138,6 +133,7 @@
     ================================================== -->
         <script src="{{ asset('assets/frontend/js/plugins.js') }}"></script>
         <script src="{{ asset('assets/frontend/js/designesia.js') }}"></script>
+        @stack('js')
 
     </body>
 
