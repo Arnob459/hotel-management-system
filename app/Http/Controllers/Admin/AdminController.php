@@ -10,6 +10,11 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\Room;
+use App\Models\RoomCode;
+use App\Models\Booking;
+
+
 
 class AdminController extends Controller
 {
@@ -17,6 +22,12 @@ class AdminController extends Controller
     {
         $data['page_title'] = 'Dashboard';
         $data['total_user'] = User::count();
+        $data['total_room'] = RoomCode::count();
+        $data['total_room_type'] = Room::count();
+        $data['total_booking'] = Booking::count();
+
+
+
 
         return view('admin.dashboard', $data);
     }

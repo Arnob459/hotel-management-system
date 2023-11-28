@@ -8,7 +8,7 @@
     <div class="sidebar-wrapper  active">
 
             <div class=" d-flex justify-content-center m-4 " >
-                    <a href="{{ route('admin.dashboard') }}"><img height="50vh" src="{{asset('assets/images/logo/'. $gnl->favicon )}}" alt="Logo" srcset=""></a>
+                    <a href="{{ route('admin.dashboard') }}"><img height="50vh" src="{{asset('assets/images/logo/'. $gnl->logo )}}" alt="Logo" srcset=""></a>
             </div>
 
                 <div class="sidebar-toggler  x">
@@ -39,7 +39,14 @@
                     <span>Rooms</span>
                 </a>
                 </li>
-                <li class="sidebar-title">Home</li>
+                <li
+                class="sidebar-item {{ Route::is('admin.booking.index') ? 'active' : '' }}">
+                <a href="{{ route('admin.booking.index') }}" class="sidebar-link">
+                    <i class="fas fa-book-open"></i>
+                    <span>Booking</span>
+                </a>
+                </li>
+                <li class="sidebar-title">HOME</li>
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="fas fa-book"></i>

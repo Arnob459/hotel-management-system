@@ -4,8 +4,8 @@
 <!-- Mirrored from www.madebydesignesia.com/themes/seaside/index-full-page.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 18 Nov 2023 12:14:18 GMT -->
 <head>
         <meta charset="utf-8">
-        <title>Seaside Hotel</title>
-        <link rel="icon" href="{{ asset('assets/frontend/images/icon.png') }}" type="image/gif" sizes="16x16">
+        <title>{{$gnl->site_name}}</title>
+        <link rel="icon" href="{{ asset('assets/images/logo/'.$gnl->favicon) }}" type="image/gif" sizes="16x16">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="keywords" content="">
@@ -44,7 +44,7 @@
                             <!-- logo begin -->
                             <div id="logo">
                                 <a href="{{ route('index') }}">
-                                    <img class="logo" src="{{ asset('assets/frontend/images/logo.png') }}" alt="">
+                                    <img class="logo" src="{{ asset('assets/images/logo/'.$gnl->logo) }}" alt="">
                                 </a>
                             </div>
                             <!-- logo close -->
@@ -110,7 +110,7 @@
                 <div class="subfooter">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-md-6">&copy; Copyright 2023 - Seaside Hotel by <span class="id-color">Designesia</span></div>
+                            <div class="col-md-6">{{$gnl->copy_section}}</div>
                             <div class="col-md-6 text-right">
                                 <div class="social-icons">
                                     <a href="#"><i class="fa fa-facebook fa-lg"></i></a>

@@ -166,6 +166,11 @@ class BasicSettingController extends Controller
         $request->validate([
             'contact_email' => 'string|max:191',
             'contact_phone' => 'string|max:191',
+            'contact_fax' => 'string|max:191',
+            'contact_address' => 'string|max:191',
+            'opening_time' => 'string|max:191',
+
+
         ]);
 
 
@@ -173,6 +178,11 @@ class BasicSettingController extends Controller
         $gnl = SettingExtra::first();
         $gnl->contact_email = $request->contact_email;
         $gnl->contact_phone = $request->contact_phone;
+        $gnl->contact_fax = $request->contact_fax;
+        $gnl->contact_address = $request->contact_address;
+        $gnl->opening_time = $request->opening_time;
+
+
         $gnl->save();
         return back()->with('success', 'Updated successfully');
     }

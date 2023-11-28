@@ -46,14 +46,12 @@ return [
 
     ],
 
-    'banner' => [
-        'path' => 'assets/images/banner',
-        'size' => '1920x1282'
+    'banner_video' => [
+        'path' => 'assets/videos',
     ],
 
     'banner_image' => [
         'path' => 'assets/images/banner',
-        'size' => '950x730'
     ],
 
     'logo_fav' => [

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\SettingExtra;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class BannerController extends Controller
 {
@@ -24,24 +26,18 @@ class BannerController extends Controller
             $this->validate($request, [
                 'banner_title' => 'required|string|max:255',
                 'banner_subtitle' => 'required|string|max:255',
-                'banner_bg_img' => 'image|mimes:jpeg,png,jpg|max:2048',
+                'banner_bg_video' => 'nullable|mimes:mp4|max:10240',
                 'banner_img' => 'image|mimes:jpeg,png,jpg|max:2048',
             ]);
 
             $data = SettingExtra::first();
 
-            if ($request->hasFile('banner_bg_img')) {
-                $filename = $data->bg_image;
-                try {
-                    $path = config('constants.banner.path');
-                    $size = config('constants.banner.size');
-                    remove_file(config('constants.banner.path') . '/' .$data->bg_image);
-                    $filename = upload_image($request->banner_bg_img, $path, $size, $filename);
-                } catch (\Exception $exp) {
+            if ($request->hasFile('banner_bg_video')) {
+            remove_file(config('constants.banner_video.path') . '/' . $data->bg_video);
 
-                    return back()->with('error','Image could not be uploaded');
-                }
-                $data->bg_image = $filename;
+                $videoPath = $request->file('banner_bg_video')->store( );
+                $request->file('banner_bg_video')->move(public_path('assets/videos'), $videoPath);
+                $data->bg_video = $videoPath;
             }
             if ($request->hasFile('banner_img')) {
                 $filename = $data->image;
@@ -52,7 +48,7 @@ class BannerController extends Controller
                     $filename = upload_image($request->banner_img, $path, $size, $filename);
                 } catch (\Exception $exp) {
 
-                    return back()->withWarning('Image could not be uploaded');
+                    return back()->withErrors('Image could not be uploaded');
                 }
                 $data->image = $filename;
             }

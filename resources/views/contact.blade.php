@@ -25,24 +25,16 @@
                             <div class="col-lg-8">
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <h3>Seaside Miami</h3>
+                                        <h3>{{$gnl->site_name}}</h3>
                                         <address>
-                                            <span><strong>Address:</strong>100 S Main St, Los Angeles, CA</span>
-                                            <span><strong>Phone:</strong>(208) 333 9296</span>
-                                            <span><strong>Fax:</strong>(208) 333 9298</span>
-                                            <span><strong>Email:</strong><a href="mailto:contact@example.com">contact@example.com</a></span>
+                                            <span><strong>Address:</strong>{{$gnl_extra->contact_address}}</span>
+                                            <span><strong>Phone:</strong>{{$gnl_extra->contact_phone}}</span>
+                                            <span><strong>Fax:</strong>{{$gnl_extra->contact_fax}}</span>
+                                            <span><strong>Email:</strong><a href="mailto:{{$gnl_extra->contact_email}}">{{$gnl_extra->contact_email}}</a></span>
                                         </address>
                                     </div>
 
-                                    <div class="col-lg-6">
-                                        <h3>Seaside Maldives</h3>
-                                        <address>
-                                            <span><strong>Address:</strong>100 S Main St, Los Angeles, CA</span>
-                                            <span><strong>Phone:</strong>(208) 333 9296</span>
-                                            <span><strong>Fax:</strong>(208) 333 9298</span>
-                                            <span><strong>Email:</strong><a href="mailto:contact@example.com">contact@example.com</a></span>
-                                        </address>
-                                    </div>
+
                                 </div>
 
                                 <div class="spacer-single"></div>

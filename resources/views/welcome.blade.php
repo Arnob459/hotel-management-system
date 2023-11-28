@@ -8,14 +8,14 @@
 
 
 
-            <section class="no-top no-bottom jarallax vertical-center" data-video-src="mp4:{{ asset('assets/frontend/images/video/local-video-1.mp4') }}">
+            <section class="no-top no-bottom jarallax vertical-center" data-video-src="mp4:{{ asset('assets/videos/'.$gnl_extra->bg_video) }}">
 
                 <div class="de-overlay v-center">
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-6">
-                                <h1>Enjoy Your<br>Dream Vacation</h1>
-                                <p class="lead">The Seaside Hotel is the right choice for visitors who are searching for a combination of charm, peace and, comfort.</p>
+                                <h1>{{ $gnl_extra->banner_title }}</h1>
+                                <p class="lead">{{ $gnl_extra->banner_sub_title }}</p>
                                 <a class="btn-main" href="{{ route('rooms') }}"><span>Choose Room</span></a>
                             </div>
                         </div>
@@ -31,7 +31,7 @@
                                 <i class="icon_clock_alt"></i>
                                 <div class="info-box_text">
                                     <div class="info-box_title">Opening Times</div>
-                                    <div class="info-box_subtite">Monday - Friday: 09:00 - 18:00</div>
+                                    <div class="info-box_subtite">{{$gnl_extra->opening_time}}</div>
                                 </div>
                             </div>
                         </div>
@@ -41,7 +41,7 @@
                                 <i class="icon_house_alt"></i>
                                 <div class="info-box_text">
                                     <div class="info-box_title">Our Location</div>
-                                    <div class="info-box_subtite">100 S Main St, Los Angeles, CA</div>
+                                    <div class="info-box_subtite">{{$gnl_extra->contact_address}}</div>
                                 </div>
                             </div>
                         </div>
@@ -51,7 +51,7 @@
                                 <i class="icon_headphones"></i>
                                 <div class="info-box_text">
                                     <div class="info-box_title">Customer Support</div>
-                                    <div class="info-box_subtite">+208 333 9296</div>
+                                    <div class="info-box_subtite">{{$gnl_extra->contact_phone}}</div>
                                 </div>
                             </div>
                         </div>
@@ -62,7 +62,7 @@
             </div>
 
             <section class="jarallax">
-                <img src="{{asset('assets/images/logo/'. $gnl->breadcrumb)}}" class="jarallax-img" alt="">
+                <img src="{{asset('assets/images/banner/'. $gnl_extra->image)}}" class="jarallax-img" alt="">
                 <div class="container">
                     <div class="row gx-4">
                         <div class="col-lg-12 text-center">

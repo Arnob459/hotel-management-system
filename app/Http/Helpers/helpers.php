@@ -328,7 +328,7 @@ function getTrx()
     $characters = 'ABCDEFGHJKMNOPQRSTUVWXYZ123456789';
     $charactersLength = strlen($characters);
     $randomString = '';
-    for ($i = 0; $i < 12; $i++) {
+    for ($i = 0; $i < 10; $i++) {
         $randomString .= $characters[rand(0, $charactersLength - 1)];
     }
     return $randomString;

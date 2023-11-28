@@ -19,7 +19,6 @@ class BookingController extends Controller
 
     public function bookingStore(Request $request)
     {
-        dd($request);
 
         $this->validate($request, [
             'room_id' => 'required|integer|max:10',
@@ -39,6 +38,7 @@ class BookingController extends Controller
             'checkout_date' => $request->checkout_date,
             'total_adults' => $request->adults,
             'total_children' => $request->children,
+            'booking_code' => getTrx(),
             'ref' => 'front',
             'name' => $request->name,
             'email' => $request->email,

@@ -83,7 +83,13 @@ Route::name('admin.')->group(function() {
         Route::get('room/edit/{id}', [RoomController::class, 'roomEdit'])->name('room.edit');
         Route::post('room/edit/{id}', [RoomController::class, 'roomUpdate'])->name('room.update');
         Route::delete('/room/destroy/{id}', [RoomController::class, 'roomDestroy'])->name('room.destroy');
-
+        //Booking
+        Route::get('/booking', [BookingController::class, 'booking'])->name('booking.index');
+        Route::get('/booking/create', [BookingController::class, 'bookingCreate'])->name('booking.create');
+        Route::post('/booking', [BookingController::class, 'bookingStore'])->name('booking.store');
+        Route::get('booking/edit/{id}', [BookingController::class, 'bookingEdit'])->name('booking.edit');
+        Route::post('booking/edit/{id}', [BookingController::class, 'bookingUpdate'])->name('booking.update');
+        Route::delete('/booking/destroy/{id}', [BookingController::class, 'bookingDestroy'])->name('booking.destroy');
 
         //Gallery
         Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery.index');
