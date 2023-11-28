@@ -97,9 +97,7 @@
                         <li class="submenu-item {{ Route::is('admin.contact') ? 'active' : '' }}">
                             <a href="{{ route('admin.contact') }}">Contact</a>
                         </li>
-                        <li class="submenu-item {{ Route::is('admin.breadcrumb') ? 'active' : '' }}">
-                            <a href="{{ route('admin.breadcrumb') }}">Breadcrumb</a>
-                        </li>
+
                         <li class="submenu-item {{ Route::is('admin.social.create') ? 'active' : '' }}">
                             <a href="{{ route('admin.social.create') }}">Social</a>
                         </li>
@@ -108,6 +106,14 @@
                         </li>
 
                     </ul>
+                </li>
+
+                <li
+                class="sidebar-item {{ Route::is('admin.connectors') ? 'active' : '' }}">
+                <a href="{{ route('admin.connectors') }}" class="sidebar-link">
+                    <i class="fas fa-user-friends"></i>
+                    <span>Connectors</span>
+                </a>
                 </li>
 
             </ul>

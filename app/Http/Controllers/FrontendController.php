@@ -10,6 +10,8 @@ use App\Models\Room;
 use App\Models\RoomImage;
 use App\Models\Gallery;
 use App\Models\Testimonial;
+use App\Models\Contact;
+
 
 
 
@@ -55,6 +57,26 @@ class FrontendController extends Controller
     public function contact()
     {
         return view('contact');
+    }
+    public function contactStore(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|max:255',
+            'phone' => 'required|string|max:255',
+            'message' => 'required|string|max:2055',
+
+        ]);
+
+
+        $data = new Contact();
+        $data->name =  $request->name;
+        $data->email =  $request->email;
+        $data->phone =  $request->phone;
+        $data->message =  $request->message;
+        $data->save();
+
+        return redirect()->route('contact')->with('success', 'Form Submitted successfully.');
     }
     public function offer()
     {

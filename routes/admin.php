@@ -136,6 +136,11 @@ Route::name('admin.')->group(function() {
 
         //End Basic Settings
 
+        //Contacts
+        Route::get('/connectors', [ContactController::class, 'index'])->name('connectors');
+        Route::get('/connectors/details/{id}', [ContactController::class, 'details'])->name('connectors.details');
+        Route::post('/connectors/mail/{id}', [ContactController::class, 'sendMail'])->name('connectors.mail.send');
+
         //logout
         Route::get('/logout', [Auth\LoginController ::class, 'logout'])->name('logout');
     });

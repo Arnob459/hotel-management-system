@@ -27,9 +27,10 @@
                 <!-- float text begin -->
                 <div class="float-text">
                     <div class="de_social-icons">
-                        <a href="#"><i class="fa fa-facebook fa-lg"></i></a>
-                        <a href="#"><i class="fa fa-twitter fa-lg"></i></a>
-                        <a href="#"><i class="fa fa-instagram fa-lg"></i></a>
+                        @foreach ($socials as $item)
+                        <a href="{{ $item->url }}"><i class="fa {{ $item->icon }} fa-lg"></i></a>
+
+                        @endforeach
                     </div>
                     <span><a href="{{ route('booking') }}">Book Now</a></span>
                 </div>
@@ -92,6 +93,14 @@
                                         <li><a href="{{route('blog')}}">Blog</a></li>
                                         <li><a href="{{route('galary')}}">Gallery</a></li>
                                         <li><a href="{{route('contact')}}">Contact</a></li>
+                                        @guest
+                                        <li><a href="{{route('login')}}">login</a></li>
+                                        <li><a href="{{route('register')}}">Signup</a></li>
+                                        @else
+                                        <li><a href="{{route('home')}}">Profile</a></li>
+                                        @endguest
+
+
                                     </ul>
                                     <!-- mainmenu close -->
 
@@ -113,12 +122,9 @@
                             <div class="col-md-6">{{$gnl->copy_section}}</div>
                             <div class="col-md-6 text-right">
                                 <div class="social-icons">
-                                    <a href="#"><i class="fa fa-facebook fa-lg"></i></a>
-                                    <a href="#"><i class="fa fa-twitter fa-lg"></i></a>
-                                    <a href="#"><i class="fa fa-rss fa-lg"></i></a>
-                                    <a href="#"><i class="fa fa-google-plus fa-lg"></i></a>
-                                    <a href="#"><i class="fa fa-skype fa-lg"></i></a>
-                                    <a href="#"><i class="fa fa-dribbble fa-lg"></i></a>
+                                    @foreach ($socials as $item)
+                                        <a href="{{ $item->url }}"><i class="fa {{ $item->icon }} fa-lg"></i></a>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -133,7 +139,75 @@
     ================================================== -->
         <script src="{{ asset('assets/frontend/js/plugins.js') }}"></script>
         <script src="{{ asset('assets/frontend/js/designesia.js') }}"></script>
+        <script src="{{ asset('assets/frontend/bootstrap-notify-master/bootstrap-notify.js') }}"></script>
+        <script src="{{ asset('assets/frontend/bootstrap-notify-master/bootstrap-notify.min.js') }}}"></script>
         @stack('js')
+        @if (session()->has('success'))
+        <script>
+            var content = {};
+
+            content.message = '{{session('success')}}';
+            content.title = 'Success!!';
+            content.icon = 'fa fa-bell';
+
+            $.notify(content, {
+                type: 'success',
+                placement: {
+                    from: 'top',
+                    align: 'right'
+                },
+
+                time: 1000,
+                delay: 4000,
+            });
+        </script>
+    @endif
+
+    @if (session()->has('warning'))
+            <script>
+                var content = {};
+
+                content.message = '{{session('warning')}}';
+                content.title = 'Warning!!';
+                content.icon = 'fa fa-bell';
+
+                $.notify(content, {
+                    type: 'warning',
+                    placement: {
+                        from: 'top',
+                        align: 'right'
+                    },
+
+                    time: 1000,
+                    delay: 40000,
+                });
+            </script>
+    @endif
+
+
+    @if ($errors->any())
+        <script>
+                @foreach ($errors->all() as $error)
+            var content = {};
+
+            content.message = '{{ $error }}';
+            content.title = 'Error!!';
+            content.icon = 'fa fa-bell';
+
+            $.notify(content, {
+                type: 'danger',
+                placement: {
+                    from: 'top',
+                    align: 'right'
+                },
+
+                time: 500,
+                delay: 4000,
+            });
+            @endforeach
+
+        </script>
+    @endif
 
     </body>
 

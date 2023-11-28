@@ -20,6 +20,7 @@ Route::get('/blog', [App\Http\Controllers\FrontendController::class, 'blog'])->n
 Route::get('/blog/single', [App\Http\Controllers\FrontendController::class, 'blogSingle'])->name('blog.single');
 Route::get('/galary', [App\Http\Controllers\FrontendController::class, 'galary'])->name('galary');
 Route::get('/contact', [App\Http\Controllers\FrontendController::class, 'contact'])->name('contact');
+Route::post('/contact', [App\Http\Controllers\FrontendController::class, 'contactStore'])->name('contact.store');
 Route::get('/offer', [App\Http\Controllers\FrontendController::class, 'offer'])->name('offer');
 Route::get('/rooms', [App\Http\Controllers\FrontendController::class, 'rooms'])->name('rooms');
 Route::get('/room/single/{id}', [App\Http\Controllers\FrontendController::class, 'roomSingle'])->name('room.single');
@@ -27,6 +28,10 @@ Route::get('/room/single/{id}', [App\Http\Controllers\FrontendController::class,
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
+Route::post('/profile/update', [App\Http\Controllers\HomeController::class, 'profileUpdate'])->name('profile.update');
+
+
 Route::get('/booking', [App\Http\Controllers\BookingController::class, 'booking'])->name('booking');
 Route::post('/booking', [App\Http\Controllers\BookingController::class, 'bookingStore'])->name('booking.store');
 Route::get('/booking/available-rooms/{checkin_date}',[App\Http\Controllers\BookingController::class, 'available_rooms']);

@@ -22,5 +22,7 @@ class AppServiceProvider extends ServiceProvider
         //
         view()->share(['gnl' => \App\Models\Setting::first()]);
         view()->share(['gnl_extra' => \App\Models\SettingExtra::first()]);
+        view()->share(['socials' => \App\Models\Social::all()]);
+
     }
 }

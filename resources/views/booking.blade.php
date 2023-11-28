@@ -33,7 +33,7 @@
 
                                     <div class="guests-n-rooms">
                                         <div class="row">
-                                            <div class="col-md-4">
+                                            <div class="col-md-6 text-center">
                                                 <h4>Adult</h4>
                                                 <div class="de-number">
                                                     <span class="d-minus">-</span>
@@ -41,7 +41,7 @@
                                                     <span class="d-plus">+</span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-6 ">
                                                 <h4>Children</h4>
                                                 <div class="de-number">
                                                     <span class="d-minus">-</span>
@@ -49,14 +49,14 @@
                                                     <span class="d-plus">+</span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            {{-- <div class="col-md-4">
                                                 <h4>Room</h4>
                                                 <div id="d-room-count" class="de-number">
                                                     <span class="d-minus">-</span>
                                                     <input id="room-count" type="text" name="roomcount" value="1">
                                                     <span class="d-plus">+</span>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </div>
                                 </div>

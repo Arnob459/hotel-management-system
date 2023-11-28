@@ -39,36 +39,52 @@
 
                                 <div class="spacer-single"></div>
 
-                                <form name="contactForm" id='contact_form' method="post">
+                                <form action="{{ route('contact.store') }}" id='contact_form' method="post">
+                                    @csrf
                                     <div class="row">
                                         <div class="col-md-12 mb10">
                                             <h3>Send Us Message</h3>
                                         </div>
                                         <div class="col-md-6">
-                                            <div id='name_error' class='error'>Please enter your name.</div>
                                             <div>
-                                                <input type='text' name='Name' id='name' class="form-control" placeholder="Your Name" required>
+                                                <input type='text' name='name' id='name' class="form-control" placeholder="Your Name" required>
+                                                @error('name')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                             </div>
 
-                                            <div id='email_error' class='error'>Please enter your valid E-mail ID.</div>
                                             <div>
-                                                <input type='email' name='Email' id='email' class="form-control" placeholder="Your Email" required>
+                                                <input type='email' name='email' id='email' class="form-control" placeholder="Your Email" required>
+                                                @error('email')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                             </div>
 
-                                            <div id='phone_error' class='error'>Please enter your phone number.</div>
                                             <div>
                                                 <input type='text' name='phone' id='phone' class="form-control" placeholder="Your Phone" required>
+                                                @error('phone')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div id='message_error' class='error'>Please enter your message.</div>
                                             <div>
                                                 <textarea name='message' id='message' class="form-control" placeholder="Your Message" required></textarea>
+                                                @error('message')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                             </div>
                                         </div>
 
                                         <div class="col-md-12">
-                                            <div class="g-recaptcha" data-sitekey="6LdW03QgAAAAAJko8aINFd1eJUdHlpvT4vNKakj6"></div>
                                             <p id='submit' class="mt20">
                                                 <input type='submit' id='send_message' value='Submit Form' class="btn btn-line">
                                             </p>

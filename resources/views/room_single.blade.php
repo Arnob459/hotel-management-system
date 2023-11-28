@@ -8,8 +8,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <h4>Luxury</h4>
-                    <h1>Suite</h1>
+                    <h1>{{ $room->name }}</h1>
                 </div>
             </div>
         </div>
