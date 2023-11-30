@@ -43,7 +43,7 @@
 
                 @foreach ($availableRooms as $item)
 
-                    <div class="col-md-6 col-lg-4 col-md-6">
+                    <div class="col-md-6 col-lg-3 col-md-6">
                         <div class="card">
                             <div class="card-body ">
                                 <div class="row">

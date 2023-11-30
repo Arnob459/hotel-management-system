@@ -33,7 +33,7 @@
                                     <img src="{{ asset('assets/frontend/images/ui/floorplan.svg') }}" alt="">{{ $item->area }}
                                 </span>
                             </div>
-                            <a href="{{ route('room.single',$item->id) }}">
+                            <a href="{{ route('room.single',[str_replace(' ','-',$item->name),$item->id]) }}">
 
                                 @foreach ($item->images as $image)
                                 <img src="{{ asset('assets/images/room/'.$image->picture) }}" class="img-fluid" alt="">
@@ -48,7 +48,7 @@
                         <div class="d-text">
                             <h3>{{ $item->name }}</h3>
                             <p>{{ $item->short_text }}</p>
-                            <a href="{{ route('room.single',$item->id) }}" class="btn-line"><span>Book Now For {{ $gnl->cur_sym}}{{formatter_money( $item->price) }}</span></a>
+                            <a  href="{{ route('room.single',[str_replace(' ','-',$item->name),$item->id]) }}" class="btn-line"><span>Book Now For {{ $gnl->cur_sym}}{{formatter_money( $item->price) }}</span></a>
                         </div>
                     </div>
                 </div>

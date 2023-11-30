@@ -28,6 +28,10 @@ class AdminController extends Controller
         $data['active_booking'] = Booking::where('status',1)->count();
         $data['pending_booking'] = Booking::where('status',0)->count();
         $data['total_income'] = Booking::where('status',1)->where('payment_status',1)->sum('total_price');
+        $data['todays_checkin'] = Booking::where('checkin_date',Carbon::now()->toDateString())->count();
+        $data['todays_checkout'] = Booking::where('checkout_date',Carbon::now()->toDateString())->count();
+
+
 
 
 

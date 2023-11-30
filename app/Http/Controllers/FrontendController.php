@@ -89,7 +89,7 @@ class FrontendController extends Controller
 
         return view('rooms',$data);
     }
-    public function roomSingle($id)
+    public function roomSingle($slug,$id)
     {
         $data['room']= Room::with('images')->where('status',1)->findOrfail($id);
         $data['photos'] = RoomImage::where('room_id',$id)->get();

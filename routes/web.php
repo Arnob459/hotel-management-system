@@ -23,7 +23,7 @@ Route::get('/contact', [App\Http\Controllers\FrontendController::class, 'contact
 Route::post('/contact', [App\Http\Controllers\FrontendController::class, 'contactStore'])->name('contact.store');
 Route::get('/offer', [App\Http\Controllers\FrontendController::class, 'offer'])->name('offer');
 Route::get('/rooms', [App\Http\Controllers\FrontendController::class, 'rooms'])->name('rooms');
-Route::get('/room/single/{id}', [App\Http\Controllers\FrontendController::class, 'roomSingle'])->name('room.single');
+Route::get('/room/{slug}/{id}', [App\Http\Controllers\FrontendController::class, 'roomSingle'])->name('room.single');
 
 Auth::routes();
 
