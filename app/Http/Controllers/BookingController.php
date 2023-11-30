@@ -7,6 +7,7 @@ use App\Models\Room;
 use App\Models\RoomCode;
 use App\Models\Booking;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class BookingController extends Controller
 {
@@ -32,6 +33,20 @@ class BookingController extends Controller
 
         ]);
 
+        $price = RoomCode::findOrfail($request->room_id);
+        $price_per_night =$price->Roomtype->price;
+
+        $checkin_date = $request->input('checkin_date');
+        $checkout_date = $request->input('checkout_date');
+        $checkin_date = Carbon::createFromFormat('Y-m-d', $checkin_date);
+        $checkout_date = Carbon::createFromFormat('Y-m-d', $checkout_date);
+
+        // Calculate the number of nights
+        $num_nights = $checkout_date->diffInDays($checkin_date);
+
+        // Calculate the total price
+        $total_price = $num_nights * $price_per_night;
+
         $bookingData = [
             'room_id' => $request->room_id,
             'checkin_date' => $request->checkin_date,
@@ -44,6 +59,7 @@ class BookingController extends Controller
             'email' => $request->email,
             'phone' => $request->phone,
             'message' => $request->message,
+            'total_price' => $total_price,
 
             'user_id' => Auth::check() ? Auth::id() : null,
         ];
@@ -52,19 +68,7 @@ class BookingController extends Controller
         return redirect()->route('index')->with('success','Your reservation has been sent successfully.');
 
     }
-      // Check Avaiable rooms
-    //   function available_rooms(Request $request,$checkin_date){
-    //     $arooms=DB::SELECT("SELECT * FROM room_codes WHERE id NOT IN (SELECT room_id FROM bookings WHERE '$checkin_date' BETWEEN checkin_date AND checkout_date)");
 
-
-    //     $data=[];
-    //     foreach($arooms as $room){
-    //         $roomTypes=Room::find($room->room_id);
-    //         $data[]=['room'=>$room,'roomtype'=>$roomTypes];
-    //     }
-
-    //     return response()->json(['data'=>$data]);
-    // }
 
     function available_rooms(Request $request, $checkin_date) {
         $availableRooms = RoomCode::whereNotIn('id', function($query) use ($checkin_date) {

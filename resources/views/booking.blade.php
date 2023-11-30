@@ -26,10 +26,10 @@
 
                                 <div class="col-md-12 mb10">
                                     <h4>Check In Date</h4>
-                                    <input type="date"  class="form-control checkin-date" name="checkin_date" value="" required>
+                                    <input type="date"  class="form-control checkin-date" min="{{ now()->format('Y-m-d') }}" name="checkin_date" value="" required>
 
                                     <h4>Check Out Date</h4>
-                                    <input type="date"  class="form-control" name="checkout_date" value="" required>
+                                    <input type="date"  class="form-control" min="{{ now()->format('Y-m-d') }}" name="checkout_date" value="" required>
 
                                     <div class="guests-n-rooms">
                                         <div class="row">
@@ -94,6 +94,7 @@
                                         <textarea name='message' id='message' class="form-control" placeholder="Your Message"></textarea>
                                     </div>
                                 </div>
+                                <input type="hidden" name="roomprice" class="room-price" value="" />
 
                                 <div class="col-md-12">
                                     <p id='submit' class="mt20">
@@ -129,17 +130,23 @@
                 success:function(res){
                     var _html='';
                     $.each(res.data,function(index,row){
-                        _html+='<option  value="'+row.room.id+'">'+row.room.title+'-'+row.roomtype.name+'</option>';
+                        _html+='<option data-price="'+row.roomtype.price+'"  value="'+row.room.id+'">'+row.room.title+'-'+row.roomtype.name+'</option>';
                     });
                     $(".room-list").html(_html);
 
-                    console.log($data);
+                    var _selectedPrice=$(".room-list").find('option:selected').attr('data-price');
+                    $(".room-price").val(_selectedPrice);
+                    $(".show-room-price").text(_selectedPrice);
 
                 }
             });
         });
 
-
+        $(document).on("change",".room-list",function(){
+            var _selectedPrice=$(this).find('option:selected').attr('data-price');
+            $(".room-price").val(_selectedPrice);
+            $(".show-room-price").text(_selectedPrice);
+        });
 
     });
 </script>

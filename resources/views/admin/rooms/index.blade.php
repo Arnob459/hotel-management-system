@@ -33,7 +33,7 @@
                                     <td>{{$loop->iteration}}</td>
 
                                     <td class="text-bold-500">{{ $item->name }}</td>
-                                    <td class="text-bold-500">{{formatter_money( $item->price) }}</td>
+                                    <td class="text-bold-500">{{formatter_money( $item->price) }} {{ $gnl->cur_sym }}</td>
 
                                     <td class="text-center">
 

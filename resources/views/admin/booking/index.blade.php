@@ -19,8 +19,10 @@
                                         <th>Booking Number</th>
                                         <th>Username</th>
                                         <th>Phone</th>
+                                        <th>Room</th>
                                         <th>Checkin Date</th>
                                         <th>Checkout Date</th>
+                                        <th>Price</th>
                                         <th>Actions</th>
 
                                     </tr>
@@ -32,9 +34,11 @@
                                         <td>{{ $item->booking_code }}</td>
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->phone }}</td>
+                                        <td>{{ $item->room->title}},{{ $item->room->roomtype->name}}</td>
+
                                         <td>{{ $item->checkin_date }}</td>
                                         <td>{{ $item->checkout_date }}</td>
-
+                                        <td>{{formatter_money( $item->total_price) }}{{ $gnl->cur_sym }}</td>
 
                                         <td>
                                             <a href="{{ route('admin.booking.edit',$item->id) }}" class="btn icon btn-primary"><i class="bi bi-pencil"></i></a>

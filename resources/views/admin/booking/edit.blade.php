@@ -37,7 +37,7 @@
                             <div class="form-group">
                                 <label for="contact-info-vertical"  class="mb-2">Select User</label>
                                 <select name="user_id"  class="form-select" >
-                                    <option value="">Select</option>
+                                    <option value="">Guest</option>
 
                                     @foreach($users as $user)
                                     <option value="{{$user->id}}" @if ($booking->user_id == $user->id)
@@ -90,12 +90,22 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-2">
                             <div class="form-group">
                                 <label for="contact-info-vertical"  class="mb-2">Payment Status</label>
                                 <select name="payment_status"  class="form-select" >
                                     <option value="1"@if ($booking->payment_status == '1') selected @endif>Completed</option>
                                     <option value="0"@if ($booking->payment_status == '0') selected @endif>Pending</option>
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="contact-info-vertical"  class="mb-2"> Status</label>
+                                <select name="status"  class="form-select" >
+                                    <option value="1"@if ($booking->status == '1') selected @endif>Active</option>
+                                    <option value="0"@if ($booking->status == '0') selected @endif>Pending</option>
 
                                 </select>
                             </div>

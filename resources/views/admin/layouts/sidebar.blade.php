@@ -40,6 +40,13 @@
                 </a>
                 </li>
                 <li
+                class="sidebar-item {{ Route::is('admin.room.available') ? 'active' : '' }}">
+                <a href="{{ route('admin.room.available') }}" class="sidebar-link">
+                    <i class="fas fa-book-open"></i>
+                    <span>Available Rooms</span>
+                </a>
+                </li>
+                <li
                 class="sidebar-item {{ Route::is('admin.booking.index') ? 'active' : '' }}">
                 <a href="{{ route('admin.booking.index') }}" class="sidebar-link">
                     <i class="fas fa-book-open"></i>

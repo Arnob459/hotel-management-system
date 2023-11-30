@@ -68,7 +68,7 @@
                         <div class="card-body ">
                             <div class="row">
                                 <div class="col-md-3  ">
-                                    <div class="stats-icon red mb-2">
+                                    <div class="stats-icon blue mb-2">
                                         <i class="fas fa-border-style"></i>
                                     </div>
                                 </div>
@@ -81,6 +81,64 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="col-6 col-lg-4 col-md-6">
+                    <div class="card">
+                        <div class="card-body ">
+                            <div class="row">
+                                <div class="col-md-3  ">
+                                    <div class="stats-icon red mb-2">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-9 ">
+                                    <h6 class="text-muted font-semibold">Pending Booking </h6>
+                                    <h6 class="font-extrabold mb-0">{{ $pending_booking }}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-lg-4 col-md-6">
+                    <div class="card">
+                        <div class="card-body ">
+                            <div class="row">
+                                <div class="col-md-3  ">
+                                    <div class="stats-icon green mb-2">
+                                        <i class="fas fa-check-circle"></i>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-9 ">
+                                    <h6 class="text-muted font-semibold">Active Booking </h6>
+                                    <h6 class="font-extrabold mb-0">{{ $active_booking }}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-lg-4 col-md-6">
+                    <div class="card">
+                        <div class="card-body ">
+                            <div class="row">
+                                <div class="col-md-3  ">
+                                    <div class="stats-icon green mb-2">
+                                        <i class="fas fa-hand-holding-usd"></i>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-9 ">
+                                    <h6 class="text-muted font-semibold">Total Income </h6>
+                                    <h6 class="font-extrabold mb-0">{{ formatter_money( $total_income) }} {{ $gnl->cur_sym }}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
 
 
 

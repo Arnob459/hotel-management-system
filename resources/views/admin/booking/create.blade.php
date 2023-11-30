@@ -22,14 +22,14 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="basicInput" class="mb-2">Check In Date</label>
-                                <input type="date" name="checkin_date" class="form-control form-control-lg checkin-date" id="basicInput"  required>
+                                <input type="date" name="checkin_date" min="{{ now()->format('Y-m-d') }}" class="form-control form-control-lg checkin-date" id="basicInput"  required>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="basicInput" class="mb-2">Check Out Date</label>
-                                <input type="date" name="checkout_date" class="form-control form-control-lg " id="basicInput"  required>
+                                <input type="date" name="checkout_date" class="form-control form-control-lg " min="{{ now()->format('Y-m-d') }}" id="basicInput"  required>
                             </div>
                         </div>
 

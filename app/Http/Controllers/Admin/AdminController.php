@@ -25,6 +25,12 @@ class AdminController extends Controller
         $data['total_room'] = RoomCode::count();
         $data['total_room_type'] = Room::count();
         $data['total_booking'] = Booking::count();
+        $data['active_booking'] = Booking::where('status',1)->count();
+        $data['pending_booking'] = Booking::where('status',0)->count();
+        $data['total_income'] = Booking::where('status',1)->where('payment_status',1)->sum('total_price');
+
+
+
 
 
 

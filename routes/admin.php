@@ -91,6 +91,11 @@ Route::name('admin.')->group(function() {
         Route::post('booking/edit/{id}', [BookingController::class, 'bookingUpdate'])->name('booking.update');
         Route::delete('/booking/destroy/{id}', [BookingController::class, 'bookingDestroy'])->name('booking.destroy');
 
+        Route::get('/room-available', [BookingController::class, 'roomAvailable'])->name('room.available');
+        Route::post('/room-available', [BookingController::class, 'findAvailableRooms'])->name('find.available');
+
+
+
         //Gallery
         Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery.index');
         Route::post('/gallery', [GalleryController::class, 'store'])->name('gallery.store');

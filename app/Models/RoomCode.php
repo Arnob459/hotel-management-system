@@ -15,4 +15,10 @@ class RoomCode extends Model
     function Roomtype(){
         return $this->belongsTo(Room::class,'room_id');
     }
+
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class, 'room_id');
+    }
+
 }
